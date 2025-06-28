@@ -1,3 +1,9 @@
 # Ignore .venv in any folder
 **/.venv
 .venv/
+
+# Ignore .venv specifically in the backend folder
+backend/.venv/
+
+# Ignore __pycache__ folders
+**/__pycache__/
