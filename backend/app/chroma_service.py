@@ -9,20 +9,23 @@ class ChromaService:
         self.collection = self.client.get_or_create_collection(name="docs")
         print(f"Collection created or retrieved: {self.collection.name}")
 
-    def add_document(self, content: str, filename: str):
+    def add_document(self, content: str, filenames: str, embedding: list = None):
         # Generate a unique ID for the document
-        unique_id = str(uuid.uuid4())
+        ids = [str(uuid.uuid4()) for _ in filenames]
+
+        add_args = {
+            "documents": content,
+            "metadatas": [{"filename": filename} for filename in filenames],
+            "ids": ids,
+        }
+        if embedding is not None:
+            add_args["embeddings"] = embedding
 
         """
         Add a document and its embedding to ChromaDB.
         """
-        self.collection.add(
-            documents=[content],
-            metadatas=[{"filename": filename}],
-            ids=[unique_id]
-            # embeddings=[embedding]
-        )
-        print(f"Document added with ID: {unique_id}")
+        self.collection.add(**add_args)
+        print(f"Added {len(content)} chunks to ChromaDB.")
 
     def query_documents(self, query: str, n_results: int = 5):
         """
@@ -30,7 +33,8 @@ class ChromaService:
         """
         return self.collection.query(
             query_texts=[query],
-            n_results=n_results
+            n_results=n_results,
+            include=["documents", "metadatas"]
         )
 
     def query_documents_embeddings(self, query_embedding: list, n_results: int = 5):

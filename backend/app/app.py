@@ -1,10 +1,17 @@
 from fastapi import FastAPI, UploadFile
 from app.chroma_service import ChromaService
+from app.doc_ingestion import DocumentIngestionService
+from io import BytesIO
+from app.llm_service import OllamaService
 
 app = FastAPI()
 
 # Initialize ChromaDB service
 chroma_service = ChromaService()
+# Initialize Document Ingestion Service
+doc_ingestion_service = DocumentIngestionService(chroma_service=chroma_service)
+# Initialize LLM Service
+llm_service = OllamaService(model="llama3.2")
 
 @app.get("/")
 def read_root():
@@ -12,40 +19,54 @@ def read_root():
 
 @app.post("/upload")
 async def upload_file(file: UploadFile):
-        # return {"filename": file.filename, "content_type": file.content_type}
         """
         Upload a file, generate embeddings, and store it in ChromaDB.
         """
+
+        if not file.filename.endswith(".pdf"):
+            return {"message": "Only PDF files are allowed."}
+        
         try:
             # Read file content
             content = await file.read()
-            content_str = content.decode("utf-8")  # Assuming text files
+            pdf_file = BytesIO(content)
 
-            # # Generate embeddings (replace with your embedding function)
-            # embedding = [0.1, 0.2, 0.3]  # Example embedding, replace with actual function
+            # Ingest the document
+            doc_ingestion_service.ingest_document(file_content=pdf_file, filename=file.filename)
 
-            # Store document and embeddings in ChromaDB
-            chroma_service.add_document(content=content_str, filename=file.filename)
-
-            return {"message": f"File '{file.filename}' uploaded and stored successfully!"}
+            return {"message": f"Document '{file.filename}' ingested successfully!"}
         except Exception as e:
             return {"error": str(e)}
 
 
-@app.get("/query")
-def get_query(query: str):
-    # return {"query": query}
+@app.get("/querydocs")
+def get_query_docs(query: str):
     """
     Query ChromaDB for similar documents based on embeddings.
     """
     try:
-        # # Generate embeddings for the query
-        # query_embedding = [0.1, 0.2, 0.3]  # Example embedding, replace with actual function
-
         # Search for similar documents in ChromaDB
         results = chroma_service.query_documents(query=query, n_results=5)
 
         return {"results": results}
+    except Exception as e:
+        return {"error": str(e)}
+    
+@app.get("/query")
+def get_query(query: str):
+    """
+    Query ChromaDB for similar documents based on embeddings, and return LLM answer.
+    """
+    try:
+        # Search for similar documents in ChromaDB
+        context = chroma_service.query_documents(query=query, n_results=5)
+        if not context:
+            return {"message": "No relevant documents found."}
+        # Generate response using LLM
+        response = llm_service.generate_response(query=query, context=context["documents"][0])
+        
+
+        return {"results": response}
     except Exception as e:
         return {"error": str(e)}
 
@@ -59,3 +80,4 @@ def get_collection():
         return {"collection": collection}
     except Exception as e:
         return {"error": str(e)}
+    

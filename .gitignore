@@ -7,3 +7,5 @@ backend/.venv/
 
 # Ignore __pycache__ folders
 **/__pycache__/
+
+.DS_Store

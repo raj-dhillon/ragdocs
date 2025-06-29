@@ -5,7 +5,7 @@ class OllamaService:
         self.model = model
         self.client = ollama.Client()
 
-    def generate_response(self, prompt: str):
+    def generate_response(self, prompt: str = None, query: str = None, context: str = None) -> dict:
         """
         Sends a prompt to the Ollama model and retrieves the response.
 
@@ -15,10 +15,25 @@ class OllamaService:
         Returns:
             dict: The response from the Ollama model.
         """
+
+        formatted_chunks = "\n\n".join(context)
+        prompt = f""""
+            Answer the question based only on the context from various documents below.
+
+            Context: 
+            {formatted_chunks}
+
+            Question: {query}
+        """
+
+        # if not prompt:
+        #     prompt = f"""
+        #     You are a helpful assistant. Please provide a response to the following query: {query}. Use this context to help you answer: {context}.
+        #     """
         try:
             print(f"Sending prompt to model '{self.model}': {prompt}")
             response = self.client.generate(model=self.model, prompt=prompt)
-            return response
+            return response.response if response else {"message": "No response from model."}
         except Exception as e:
             return {"error": str(e)}
 
