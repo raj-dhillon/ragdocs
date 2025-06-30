@@ -3,6 +3,7 @@ from app.chroma_service import ChromaService
 from app.doc_ingestion import DocumentIngestionService
 from io import BytesIO
 from app.llm_service import OllamaService
+from fastapi.responses import Response
 
 app = FastAPI()
 
@@ -15,15 +16,16 @@ llm_service = OllamaService(model="llama3.2")
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to my FastAPI application!"}
+    return {"message": "Welcome to RAGDocs API!"}
 
-@app.post("/upload")
-async def upload_file(file: UploadFile):
+@app.post("/upload", status_code=201)
+async def upload_file(file: UploadFile, response: Response):
         """
         Upload a file, generate embeddings, and store it in ChromaDB.
         """
 
         if not file.filename.endswith(".pdf"):
+            response.status_code = 422
             return {"message": "Only PDF files are allowed."}
         
         try:
@@ -36,11 +38,12 @@ async def upload_file(file: UploadFile):
 
             return {"message": f"Document '{file.filename}' ingested successfully!"}
         except Exception as e:
+            response.status_code = 500
             return {"error": str(e)}
 
 
 @app.get("/querydocs")
-def get_query_docs(query: str):
+def get_query_docs(query: str, response: Response):
     """
     Query ChromaDB for similar documents based on embeddings.
     """
@@ -50,10 +53,11 @@ def get_query_docs(query: str):
 
         return {"results": results}
     except Exception as e:
+        response.status_code = 500
         return {"error": str(e)}
     
 @app.get("/query")
-def get_query(query: str):
+def get_query(query: str, response: Response):
     """
     Query ChromaDB for similar documents based on embeddings, and return LLM answer.
     """
@@ -63,15 +67,16 @@ def get_query(query: str):
         if not context:
             return {"message": "No relevant documents found."}
         # Generate response using LLM
-        response = llm_service.generate_response(query=query, context=context["documents"][0])
+        answer = llm_service.generate_response(query=query, context=context["documents"][0])
         
 
-        return {"results": response}
+        return {"results": answer}
     except Exception as e:
+        response.status_code = 500
         return {"error": str(e)}
 
 @app.get("/collection")
-def get_collection():
+def get_collection(response: Response):
     """
     Get the collection from ChromaDB.
     """
@@ -79,5 +84,6 @@ def get_collection():
         collection = chroma_service.get_collection()
         return {"collection": collection}
     except Exception as e:
+        response.status_code = 500
         return {"error": str(e)}
     

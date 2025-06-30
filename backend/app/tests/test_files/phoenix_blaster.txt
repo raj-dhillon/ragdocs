@@ -1,0 +1,184 @@
+Terraria Wiki
+
+Discussions are now available on the Terraria Wiki.
+Miss the old Hydra Skin? Try out our Hydralize gadget! Visit the preferences page while logged in and turn on the gadget.
+Search
+Start a Wiki
+Sign In
+
+Explore
+Fan Central
+Current
+
+Recent
+Exotic Scimitar
+Breathing Reed
+Iron Broadsword
+
+History
+Skip to content
+Terraria Wiki
+Terraria Wiki
+4,771
+pages
+Explore
+Basics
+Advanced
+Terraria Links
+Wiki Community
+
+
+in: Weapon items, Guns, Ranged weapons, and 4 more
+English
+Phoenix Blaster
+Sign in to edit
+Phoenix Blaster
+Phoenix Blaster item sprite old Phoenix Blaster item sprite
+
+Statistics
+Type	
+Weapon
+Uses ammo	Bullets
+Damage	30  / 23  (Ranged)
+Knockback	2 (Very weak)
+Critical chance	4%
+Use time	14 (Very fast)
+Velocity	13
+Rarity	Rarity level: 3
+Sell	350
+Research	1 required
+Sounds
+Use	
+Internal Item ID: 219
+Phoenix Blaster (demo)
+Animation of the Phoenix Blaster.
+
+The Phoenix Blaster is a type of gun, and essentially acts as an upgraded Handgun, featuring increased bullet damage and velocity but slightly less knockback than its predecessor. It is third only to the Musket and Star Cannon and tied with the Quad-Barrel Shotgun for base damage among guns available prior to Hardmode, but with more than triple the rate of fire of the Musket. However, it cannot be autofired, apart from on pc.
+
+Its best modifier is Unreal.
+
+
+Contents
+1	Crafting
+1.1	Recipes
+2	Tips
+3	Trivia
+4	History
+Crafting
+Recipes
+Result	Ingredients	Crafting station
+Phoenix BlasterPhoenix Blaster
+Hellstone BarHellstone Bar10
+HandgunHandgun
+Iron AnvilIron Anvil
+or
+Lead AnvilLead Anvil
+Tips
+The Phoenix Blaster is useful into early-mid Hardmode, outclassing many early-Hardmode weapons.
+The Phoenix Blaster is highly effective against the Wall of Flesh due to its high base damage and fire power.
+Trivia
+The Phoenix Blaster is modeled after the Colt M1911 pistol.
+It appears to have a flashlight/laser "under-barrel" attachment under its barrel, although it is unusable.
+Although being made out of Hellstone, the Phoenix Blaster does not have any attacks nor stats related to flames.
+History
+PC version PC version
+Desktop 1.4.0.1: Sprite updated.
+Desktop 1.3.1: Sprite updated. Old sprite was .
+Desktop 1.3.0.1: Damage increased from 23 to 24.
+Desktop 1.2: Sprite updated. Old sprite was: .
+Desktop 1.1: Knockback reduced from 4 to 2.
+Desktop 1.0.5: Firing animation sprite reduced in size.
+Desktop 1.0.4: Damage reduced from 28 to 23.
+Desktop-Release: Introduced.
+Console version Console version
+Console 1.0.933.1: Made changes from PS4's 1.0.750.0 update. (Xbox One)
+Console 1.0.750.0: (PlayStation 4)
+Damage increased from 23 to 24.
+Sprite updated to match Desktop 1.3.1.
+Console 1.02: Sprite updated to match Desktop 1.2.
+Console-Release: Introduced with stats and graphics of Desktop 1.1.
+Nintendo Switch Nintendo Switch version
+Switch 1.0.711.6: Introduced.
+Mobile version Mobile version
+Mobile 1.3.0.7.9: Now autofires again.
+Mobile 1.2.12773: No longer autofires.
+Mobile 1.2.6508: Sprite updated to match Desktop 1.2.
+Mobile 1.1.5536: Knockback reduced from 4 to 2.
+Mobile-Release: Introduced with stats and graphics of Desktop 1.0.5.
+Nintendo Nintendo 3DS version version
+3DS-Release: Introduced with stats and graphics of Desktop 1.2.
+V • D • E • P
+Hellstone
+​HellstoneHellstone​Hellstone BarBar​Hellstone BrickBrick​Hellstone Brick WallBrick Wall​Flask of FireFlask of Fire​Hellfire ArrowHellfire Arrow​Molten PickaxeMolten Pickaxe​Molten HamaxeMolten Hamaxe​VolcanoVolcano​FlamarangFlamarang​Molten FuryMolten Fury​SharangaSharanga​Phoenix BlasterPhoenix Blaster​Imp StaffImp Staff​Molten armorMolten armor
+V • D • E • P
+Weapons (List):​Melee weaponsMelee weapons​Ranged weaponsRanged weapons​Magic weaponsMagic weapons​Summoning weaponsSummoning weapons​Throwing weapons  Throwing weapons Old Chinese version tModLoader version
+Melee Weapons
+Other Melee Weapons
+Ranged Weapons
+Arrow consuming
+Bows	​Wooden BowWooden (​Boreal Wood BowBoreal​Palm Wood BowPalm​Rich Mahogany BowRich Mahogany​Ebonwood BowEbonwood​Shadewood BowShadewood​Pearlwood BowPearlwood​Ash Wood BowAsh)​Copper BowCopper​Tin BowTin​Iron BowIron​Lead BowLead​Silver BowSilver​Tungsten BowTungsten​Gold BowGold​Platinum BowPlatinum​Blood Rain BowBlood Rain​Demon BowDemon​Tendon BowTendon​Hellwing BowHellwing​The Bee's KneesThe Bee's Knees​Molten FuryMolten Fury​MarrowMarrow​Phantom PhoenixPhantom Phoenix​Daedalus StormbowDaedalus Stormbow​Ice BowIce​Shadowflame BowShadowflame​Aerial BaneAerial Bane​TsunamiTsunami​Pulse BowPulse​EventideEventide​PhantasmPhantasm​SharangaSharanga
+Repeaters	​Cobalt RepeaterCobalt​Palladium RepeaterPalladium​Mythril RepeaterMythril​Orichalcum RepeaterOrichalcum​Adamantite RepeaterAdamantite​Titanium RepeaterTitanium​Hallowed RepeaterHallowed​Chlorophyte ShotbowChlorophyte Shotbow​Vulcan RepeaterVulcan
+Bullet consuming
+Manual Guns	​Flintlock PistolFlintlock Pistol​BoomstickBoomstick​The UndertakerThe Undertaker​HandgunHandgun​ShotgunShotgun​Quad-Barrel ShotgunQuad-Barrel Shotgun​RevolverRevolver​Phoenix BlasterPhoenix Blaster​Onyx BlasterOnyx Blaster​Venus MagnumVenus Magnum​Sniper RifleSniper Rifle​Egg CannonEgg Cannon
+Automatic Guns	​MinisharkMinishark​Pew-matic HornPew-matic Horn​Clockwork Assault RifleClockwork Assault Rifle​Red RyderRed Ryder​GatligatorGatligator​MegasharkMegashark​MusketMusket​Tactical ShotgunTactical Shotgun​UziUzi​Chain GunChain Gun​XenopopperXenopopper​Vortex BeaterVortex Beater​S.D.M.G.S.D.M.G.
+Rocket consuming	​Proximity Mine LauncherProximity Mine Launcher​Rocket LauncherRocket Launcher​Grenade LauncherGrenade Launcher​Snowman CannonSnowman Cannon​Electrosphere LauncherElectrosphere Launcher​CelebrationCelebration​Celebration Mk2Celebration Mk2
+Other Ranged Weapons
+Magic Weapons
+Summoning Weapons
+Throwing Weapons (Old Chinese version tModLoader version)
+Other Weapons
+Categories
+:
+Weapon items
+Guns
+Ranged weapons
+Craftable items
+Items of rarity 3
+Iron or Lead Anvil
+Entities patched in Mobile 1.3.0.7.9
+Languages 
+Deutsch
+Español
+Français
+한국어
+Polski
+Português
+Русский
+中文
+Community content is available under CC BY-NC-SA unless otherwise noted.
+More Fandoms
+Fantasy Sci-fi Terraria
+Fandom logo
+Explore properties
+Fandom
+Muthead
+Fanatical
+Follow Us
+Overview
+What is Fandom?
+About
+Careers
+Press
+Contact
+Terms of Use
+Privacy Policy
+Digital Services Act
+Global Sitemap
+Local Sitemap
+Do Not Sell My Personal Information
+Community
+Community Central
+Support
+Help
+Advertise
+Media Kit
+Contact
+Fandom Apps
+Take your favorite fandoms with you and never miss a beat.
+Fandom App logo
+Store icon
+Store icon
+Terraria Wiki is a FANDOM Games Community.
+View Mobile Site
+Search this wiki
+Search all wikis
