@@ -19,7 +19,7 @@ An AI-powered document QA service that allows you to upload documents and ask qu
 
 - **Backend**: FastAPI
 - **Database**: ChromaDB (DuckDB + Parquet for persistence)
-- **LLM**: Locally hosted language model (e.g., Ollama or similar)
+- **LLM**: Locally hosted language model (using Ollama)
 - **Containerization**: Docker
 - **Orchestration**: Kubernetes
 - **CI/CD**: Jenkins
