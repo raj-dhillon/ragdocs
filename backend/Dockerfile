@@ -1,3 +1,7 @@
+# Compile reqs: pip-compile requirements.in
+# Build docker image: docker build -t ragdocs-backend .
+# Run docker container: docker run -p 8000:8000 ragdocs-backend
+
 # Use the official Python image as the base image
 FROM python:3.11-slim
 

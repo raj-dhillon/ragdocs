@@ -1,9 +1,12 @@
 import ollama
+import os
 
 class OllamaService:
     def __init__(self, model: str = "llama3.2"):
+
+        OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
         self.model = model
-        self.client = ollama.Client()
+        self.client = ollama.Client(host=OLLAMA_HOST)
 
     def generate_response(self, prompt: str = None, query: str = None, context: str = None) -> dict:
         """
