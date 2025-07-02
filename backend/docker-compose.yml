@@ -12,6 +12,7 @@ services:
       - ollama
     environment:
       - OLLAMA_HOST=http://ollama:11434
+      - LLM_API_KEY=${LLM_API_KEY}
     restart: unless-stopped
     # mem_limit: '1g'
     # cpus: 0.5
