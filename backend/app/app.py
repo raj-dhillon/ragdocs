@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile
 from app.chroma_service import ChromaService
 from app.doc_ingestion import DocumentIngestionService
 from io import BytesIO
-from app.llm_service import OllamaService
+from app.llm_service import LLMService
 from fastapi.responses import Response
 
 app = FastAPI()
@@ -12,7 +12,8 @@ chroma_service = ChromaService()
 # Initialize Document Ingestion Service
 doc_ingestion_service = DocumentIngestionService(chroma_service=chroma_service)
 # Initialize LLM Service
-llm_service = OllamaService(model="llama3.2")
+# llm_service = LLMService(model="llama3.2")
+llm_service = LLMService(model="gpt-3.5-turbo", use_ollama=False)
 
 @app.get("/")
 def read_root():
