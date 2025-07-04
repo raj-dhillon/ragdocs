@@ -20,7 +20,7 @@ def read_root():
     return {"message": "Welcome to RAGDocs API!"}
 
 @app.post("/upload", status_code=201)
-async def upload_file(file: UploadFile, response: Response):
+async def upload_file(file: UploadFile, response: Response, username: str = None):
         """
         Upload a file, generate embeddings, and store it in ChromaDB.
         """
@@ -35,9 +35,9 @@ async def upload_file(file: UploadFile, response: Response):
             pdf_file = BytesIO(content)
 
             # Ingest the document
-            doc_ingestion_service.ingest_document(file_content=pdf_file, filename=file.filename)
+            doc_ingestion_service.ingest_document(file_content=pdf_file, filename=file.filename, username=username)
 
-            return {"message": f"Document '{file.filename}' ingested successfully!"}
+            return {"message": f"Document '{file.filename}' ingested successfully into `{username}` collection!"}
         except Exception as e:
             response.status_code = 500
             return {"error": str(e)}
@@ -58,13 +58,13 @@ def get_query_docs(query: str, response: Response):
         return {"error": str(e)}
     
 @app.get("/query")
-def get_query(query: str, response: Response):
+def get_query(query: str, response: Response, username: str = None):
     """
     Query ChromaDB for similar documents based on embeddings, and return LLM answer.
     """
     try:
         # Search for similar documents in ChromaDB
-        context = chroma_service.query_documents(query=query, n_results=5)
+        context = chroma_service.query_documents(query=query, n_results=5, username=username)
         if not context:
             return {"message": "No relevant documents found."}
         # Generate response using LLM
@@ -77,12 +77,12 @@ def get_query(query: str, response: Response):
         return {"error": str(e)}
 
 @app.get("/collection")
-def get_collection(response: Response):
+def get_collection(response: Response, username: str = None):
     """
     Get the collection from ChromaDB.
     """
     try:
-        collection = chroma_service.get_collection()
+        collection = chroma_service.get_collection(username=username)
         return {"collection": collection}
     except Exception as e:
         response.status_code = 500

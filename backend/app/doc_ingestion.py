@@ -67,7 +67,7 @@ class DocumentIngestionService:
         """
         return self.embedding_model.encode(text_chunks)
 
-    def ingest_document(self, file_content: bytes, filename: str):
+    def ingest_document(self, file_content: bytes, filename: str, username: str = None):
         """
         Process a document: extract text, split it, generate embeddings, and store in ChromaDB.
 
@@ -88,7 +88,7 @@ class DocumentIngestionService:
             embeddings = self.generate_embeddings(text_chunks)
 
             # Step 4: Add text chunks and embeddings to ChromaDB
-            self.chroma_service.add_document(content=text_chunks, filenames=[filename] * len(text_chunks), embedding=embeddings)
+            self.chroma_service.add_document(content=text_chunks, filenames=[filename] * len(text_chunks), embedding=embeddings, username=username)
 
 
             print(f"Document '{filename}' ingested successfully!")
