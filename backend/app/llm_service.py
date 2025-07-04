@@ -31,7 +31,7 @@ class LLMService:
         """
 
         formatted_chunks = "\n\n".join(context) if context else ""
-        prompt = f""""
+        prompt = f"""
             Answer the question based only on the context from various documents below.
 
             Context: 
