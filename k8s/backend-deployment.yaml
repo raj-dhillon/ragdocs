@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ragdocs-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ragdocs-backend
+  template:
+    metadata:
+      labels:
+        app: ragdocs-backend
+    spec:
+      containers:
+        - name: backend
+          image: ragdocs-backend
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: OLLAMA_HOST
+              value: http://ollama:11434
+            - name: LLM_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: llm-api-key
+                  key: LLM_API_KEY
