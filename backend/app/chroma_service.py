@@ -1,8 +1,12 @@
 import chromadb
 import uuid
+import os
+from dotenv import load_dotenv
 
 class ChromaService:
-    def __init__(self, persist_directory="./chroma_storage"):
+    def __init__(self):
+        load_dotenv()  # Load environment variables from .env file
+        persist_directory = os.getenv("CHROMA_STORAGE_PATH", "./chroma_storage")
         self.client = chromadb.PersistentClient(path=persist_directory)
         self.default_collection = self.client.get_or_create_collection(name="docs")
         print(f"Default collection created or retrieved: {self.default_collection.name}")

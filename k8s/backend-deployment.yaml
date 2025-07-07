@@ -18,11 +18,21 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: chroma-volume
+              mountPath: /app/chroma_storage
+
           env:
             - name: OLLAMA_HOST
               value: http://ollama:11434
+            - name: CHROMA_STORAGE_PATH
+              value: /app/chroma_storage
             - name: LLM_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: llm-api-key
                   key: LLM_API_KEY
+      volumes:
+        - name: chroma-volume
+          persistentVolumeClaim:
+            claimName: chroma-storage
