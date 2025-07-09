@@ -1,5 +1,7 @@
 # 🧠 RAGDocs — Document Question Answering with Local + Cloud LLMs
 
+-- Quick Jenkins test edit
+
 RAGDocs is a containerized backend service that allows users to upload documents and query them using natural language. It leverages Retrieval-Augmented Generation (RAG) techniques with support for local LLMs (via Ollama) and OpenAI.
 
 ---
