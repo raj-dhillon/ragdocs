@@ -3,11 +3,17 @@ from typing import List
 from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 from app.chroma_service import ChromaService
+from nltk.tokenize import sent_tokenize
+import nltk as nltk
 
 class DocumentIngestionService:
     def __init__(self, chroma_service: ChromaService):
         self.chroma_service = chroma_service
         self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')  # Replace with your preferred model
+        try:
+            nltk.data.find('tokenizers/punkt_tab')
+        except LookupError:
+            nltk.download('punkt_tab')
 
     def extract_text_from_pdf(self, file_path: str) -> str:
         """
@@ -40,11 +46,14 @@ class DocumentIngestionService:
         current_chunk = []
         current_length = 0
 
-        for sentence in text.split(". "):  # Split by sentences
-            if not sentence.strip():  # Skip empty sentences
-                continue
+        # sentences = [sentence.strip() for sentence in text.split(". ") if sentence.strip()] 
+        sentences = sent_tokenize(text)  # Use NLTK to split text into sentences
+
+
+        for sentence in sentences:  # Split by sentences
             if current_length + len(sentence) > chunk_size:
-                chunks.append(" ".join(current_chunk))
+                if current_chunk:
+                    chunks.append(" ".join(current_chunk))
                 current_chunk = []
                 current_length = 0
             current_chunk.append(sentence)

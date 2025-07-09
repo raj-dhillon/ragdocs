@@ -7,3 +7,5 @@ ollama
 pypdf
 python-multipart
 openai
+nltk
+fpdf

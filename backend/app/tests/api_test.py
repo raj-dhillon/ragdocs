@@ -16,9 +16,9 @@ def test_root_endpoint():
 # For now, we will test the upload endpoint with a real file.
 def test_upload_file():
     with open("app/tests/test_files/aws_cheatsheet.pdf", "rb") as f:
-        response = client.post("/upload", files={"file": ("aws_cheatsheet.pdf", f, "application/pdf")})
+        response = client.post("/upload", params={"username": "test"}, files={"file": ("aws_cheatsheet.pdf", f, "application/pdf")})
     assert response.status_code == 201
-    assert response.json() == {"message": "Document 'aws_cheatsheet.pdf' ingested successfully!"}
+    assert response.json() == {"message": "Document 'aws_cheatsheet.pdf' ingested successfully into `test` collection!"}
 
 # Test case for uploading an invalid file type
 def test_upload_invalid_file():
