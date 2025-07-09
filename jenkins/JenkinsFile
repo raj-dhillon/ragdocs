@@ -1,0 +1,66 @@
+pipeline {
+  agent any
+
+  environment {
+    DOCKER_IMAGE = 'ragdocs-backend'
+    DOCKER_TAG = 'latest'
+    CHROMA_STORAGE_PATH = './chroma_storage'
+    LLM_API_KEY = credentials('LLM_API_KEY') // Jenkins secret
+  }
+
+  stages {
+
+    stage('Clone Repo') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('Install Dependencies') {
+      steps {
+        dir('backend') {
+          sh 'pip install -r requirements.txt'
+        }
+      }
+    }
+
+    stage('Run Tests') {
+      steps {
+        dir('backend') {
+          sh 'pytest'
+        }
+      }
+    }
+
+    stage('Build Docker Image') {
+      steps {
+        dir('backend') {
+          script {
+            docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}", '.')
+          }
+        }
+      }
+    }
+
+    stage('Deploy to Kubernetes') {
+      steps {
+        script {
+          sh '''
+            kubectl apply -f k8s/chroma-pvc.yaml
+            kubectl apply -f k8s/backend-deployment.yaml
+            kubectl apply -f k8s/backend-service.yaml
+          '''
+        }
+      }
+    }
+  }
+
+  post {
+    failure {
+      echo '❌ Build failed!'
+    }
+    success {
+      echo '✅ Build and deploy successful!'
+    }
+  }
+}
