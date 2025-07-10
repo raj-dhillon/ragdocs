@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  // agent any
+  agent {
+        docker {
+            image 'python:3.11-slim' // Use the desired Python version
+        }
+  }
 
   environment {
     DOCKER_IMAGE = 'ragdocs-backend'
