@@ -1,16 +1,12 @@
 pipeline {
-  // agent any
-  agent {
-        docker {
-            image 'python:3.11-slim' // Use the desired Python version
-        }
-  }
+  agent any
 
   environment {
     DOCKER_IMAGE = 'ragdocs-backend'
     DOCKER_TAG = 'latest'
     CHROMA_STORAGE_PATH = './chroma_storage'
     LLM_API_KEY = credentials('LLM_API_KEY') // Jenkins secret
+    PYTHON_IMAGE = 'python:3.11-slim'
   }
 
   stages {
@@ -24,7 +20,14 @@ pipeline {
     stage('Install Dependencies') {
       steps {
         dir('backend') {
-          sh 'pip install -r requirements.txt'
+          script {
+            docker.image("${PYTHON_IMAGE}").inside {
+              sh '''
+                pip install --upgrade pip
+                pip install -r requirements.txt
+              '''
+            }
+          }
         }
       }
     }
@@ -32,7 +35,11 @@ pipeline {
     stage('Run Tests') {
       steps {
         dir('backend') {
-          sh 'pytest'
+          script {
+            docker.image("${PYTHON_IMAGE}").inside("-e LLM_API_KEY=${LLM_API_KEY}") {
+              sh 'pytest'
+            }
+          }
         }
       }
     }
