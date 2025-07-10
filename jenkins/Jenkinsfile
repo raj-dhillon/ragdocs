@@ -40,10 +40,10 @@ pipeline {
       steps {
         dir('backend') {
             sh 'pytest'
-          }
         }
       }
     }
+    
 
     stage('Build Docker Image') {
       steps {
